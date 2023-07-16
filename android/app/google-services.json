@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "379201669746",
+    "project_id": "looser-spend-management",
+    "storage_bucket": "looser-spend-management.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379201669746:android:c07e7abe068b7eb40d90eb",
+        "android_client_info": {
+          "package_name": "com.example.looser_spend_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379201669746-fn9a2jc1bj8f52t1cbv5be39q7794rfd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbqqoBhi5h0AOVumZrWW0kuMqhB81UUo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "379201669746-fn9a2jc1bj8f52t1cbv5be39q7794rfd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "379201669746-jllur7uuua682bct4i47j18tf0j3vnkr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.looserSpendManager"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379201669746:android:23f758c24ceebba20d90eb",
+        "android_client_info": {
+          "package_name": "com.looser_spend_management_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379201669746-fn9a2jc1bj8f52t1cbv5be39q7794rfd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbqqoBhi5h0AOVumZrWW0kuMqhB81UUo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "379201669746-fn9a2jc1bj8f52t1cbv5be39q7794rfd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "379201669746-jllur7uuua682bct4i47j18tf0j3vnkr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.looserSpendManager"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

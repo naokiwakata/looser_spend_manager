@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>379201669746-jllur7uuua682bct4i47j18tf0j3vnkr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.379201669746-jllur7uuua682bct4i47j18tf0j3vnkr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDrz6gizq5g6pm8si0IObhJd8q24kupYNs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>379201669746</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.looserSpendManager</string>
+	<key>PROJECT_ID</key>
+	<string>looser-spend-management</string>
+	<key>STORAGE_BUCKET</key>
+	<string>looser-spend-management.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:379201669746:ios:7a36a2a7b65b0bbc0d90eb</string>
+</dict>
+</plist>
