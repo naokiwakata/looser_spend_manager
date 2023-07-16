@@ -5,7 +5,19 @@ import 'package:looser_spend_manager/app_router.gr.dart';
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: HomeRoute.page, initial: true),
-        AutoRoute(page: SettingsRoute.page),
+        AutoRoute(
+          path: '/',
+          page: RootRoute.page,
+          children: [
+            AutoRoute(
+              path: 'home',
+              page: HomeRoute.page,
+            ),
+            AutoRoute(
+              path: 'settings',
+              page: SettingsRoute.page,
+            ),
+          ],
+        ),
       ];
 }
