@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:looser_spend_manager/firestore/firestore_models/expense/expense.dart';
 import 'package:looser_spend_manager/firestore/firestore_refs.dart';
 
@@ -14,6 +15,23 @@ class ExpenseRepository {
   Stream<List<Expense>> subscribeExpenses({required String userId}) {
     return expensesRef(userId: userId)
         .orderBy("createdAt", descending: true)
+        .snapshots()
+        .map((qs) {
+      final result = qs.docs.map((ds) => ds.data()).toList();
+      return result;
+    });
+  }
+
+  Stream<List<Expense>> subscribeExpensesByMonth(
+      {required String userId, required DateTime date}) {
+    final firstTimestamp =
+        Timestamp.fromDate(DateTime(date.year, date.month + 1, 0));
+    final lastTimestamp =
+        Timestamp.fromDate(DateTime(date.year, date.month + 1, 0));
+    return expensesRef(userId: userId)
+        .orderBy("createdAt", descending: true)
+        .where('createdAt', isGreaterThanOrEqualTo: firstTimestamp)
+        .where('createdAt', isLessThan: lastTimestamp)
         .snapshots()
         .map((qs) {
       final result = qs.docs.map((ds) => ds.data()).toList();
