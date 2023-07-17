@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:looser_spend_manager/app_router.gr.dart';
+
+import 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends $AppRouter {
