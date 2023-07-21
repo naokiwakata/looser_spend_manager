@@ -22,7 +22,7 @@ AppUser _$AppUserFromJson(Map<String, dynamic> json) {
 mixin _$AppUser {
   String get userId => throw _privateConstructorUsedError;
   @alwaysUseServerTimestampSealedTimestampConverter
-  dynamic get createdAt => throw _privateConstructorUsedError;
+  SealedTimestamp get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,8 @@ abstract class $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
-      @alwaysUseServerTimestampSealedTimestampConverter dynamic createdAt});
+      @alwaysUseServerTimestampSealedTimestampConverter
+      SealedTimestamp createdAt});
 }
 
 /// @nodoc
@@ -53,17 +54,17 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   @override
   $Res call({
     Object? userId = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as SealedTimestamp,
     ) as $Val);
   }
 }
@@ -77,7 +78,8 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String userId,
-      @alwaysUseServerTimestampSealedTimestampConverter dynamic createdAt});
+      @alwaysUseServerTimestampSealedTimestampConverter
+      SealedTimestamp createdAt});
 }
 
 /// @nodoc
@@ -91,14 +93,17 @@ class __$$_AppUserCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_$_AppUser(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: freezed == createdAt ? _value.createdAt! : createdAt,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as SealedTimestamp,
     ));
   }
 }
@@ -121,7 +126,7 @@ class _$_AppUser extends _AppUser {
   @override
   @JsonKey()
   @alwaysUseServerTimestampSealedTimestampConverter
-  final dynamic createdAt;
+  final SealedTimestamp createdAt;
 
   @override
   String toString() {
@@ -134,13 +139,13 @@ class _$_AppUser extends _AppUser {
         (other.runtimeType == runtimeType &&
             other is _$_AppUser &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, userId, const DeepCollectionEquality().hash(createdAt));
+  int get hashCode => Object.hash(runtimeType, userId, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -160,7 +165,7 @@ abstract class _AppUser extends AppUser {
   const factory _AppUser(
       {final String userId,
       @alwaysUseServerTimestampSealedTimestampConverter
-      final dynamic createdAt}) = _$_AppUser;
+      final SealedTimestamp createdAt}) = _$_AppUser;
   const _AppUser._() : super._();
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
@@ -169,7 +174,7 @@ abstract class _AppUser extends AppUser {
   String get userId;
   @override
   @alwaysUseServerTimestampSealedTimestampConverter
-  dynamic get createdAt;
+  SealedTimestamp get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

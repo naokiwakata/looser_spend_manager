@@ -23,7 +23,7 @@ mixin _$Expense {
   String get expenseId => throw _privateConstructorUsedError;
   int get money => throw _privateConstructorUsedError;
   @alwaysUseServerTimestampSealedTimestampConverter
-  dynamic get createdAt => throw _privateConstructorUsedError;
+  SealedTimestamp get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +38,8 @@ abstract class $ExpenseCopyWith<$Res> {
   $Res call(
       {String expenseId,
       int money,
-      @alwaysUseServerTimestampSealedTimestampConverter dynamic createdAt});
+      @alwaysUseServerTimestampSealedTimestampConverter
+      SealedTimestamp createdAt});
 }
 
 /// @nodoc
@@ -56,7 +57,7 @@ class _$ExpenseCopyWithImpl<$Res, $Val extends Expense>
   $Res call({
     Object? expenseId = null,
     Object? money = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       expenseId: null == expenseId
@@ -67,10 +68,10 @@ class _$ExpenseCopyWithImpl<$Res, $Val extends Expense>
           ? _value.money
           : money // ignore: cast_nullable_to_non_nullable
               as int,
-      createdAt: freezed == createdAt
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as SealedTimestamp,
     ) as $Val);
   }
 }
@@ -85,7 +86,8 @@ abstract class _$$_ExpenseCopyWith<$Res> implements $ExpenseCopyWith<$Res> {
   $Res call(
       {String expenseId,
       int money,
-      @alwaysUseServerTimestampSealedTimestampConverter dynamic createdAt});
+      @alwaysUseServerTimestampSealedTimestampConverter
+      SealedTimestamp createdAt});
 }
 
 /// @nodoc
@@ -100,7 +102,7 @@ class __$$_ExpenseCopyWithImpl<$Res>
   $Res call({
     Object? expenseId = null,
     Object? money = null,
-    Object? createdAt = freezed,
+    Object? createdAt = null,
   }) {
     return _then(_$_Expense(
       expenseId: null == expenseId
@@ -111,7 +113,10 @@ class __$$_ExpenseCopyWithImpl<$Res>
           ? _value.money
           : money // ignore: cast_nullable_to_non_nullable
               as int,
-      createdAt: freezed == createdAt ? _value.createdAt! : createdAt,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as SealedTimestamp,
     ));
   }
 }
@@ -138,7 +143,7 @@ class _$_Expense extends _Expense {
   @override
   @JsonKey()
   @alwaysUseServerTimestampSealedTimestampConverter
-  final dynamic createdAt;
+  final SealedTimestamp createdAt;
 
   @override
   String toString() {
@@ -153,13 +158,13 @@ class _$_Expense extends _Expense {
             (identical(other.expenseId, expenseId) ||
                 other.expenseId == expenseId) &&
             (identical(other.money, money) || other.money == money) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, expenseId, money,
-      const DeepCollectionEquality().hash(createdAt));
+  int get hashCode => Object.hash(runtimeType, expenseId, money, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -180,7 +185,7 @@ abstract class _Expense extends Expense {
       {final String expenseId,
       final int money,
       @alwaysUseServerTimestampSealedTimestampConverter
-      final dynamic createdAt}) = _$_Expense;
+      final SealedTimestamp createdAt}) = _$_Expense;
   const _Expense._() : super._();
 
   factory _Expense.fromJson(Map<String, dynamic> json) = _$_Expense.fromJson;
@@ -191,7 +196,7 @@ abstract class _Expense extends Expense {
   int get money;
   @override
   @alwaysUseServerTimestampSealedTimestampConverter
-  dynamic get createdAt;
+  SealedTimestamp get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_ExpenseCopyWith<_$_Expense> get copyWith =>

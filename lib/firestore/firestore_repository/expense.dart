@@ -1,6 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:looser_spend_manager/firestore/firestore_models/expense/expense.dart';
 import 'package:looser_spend_manager/firestore/firestore_refs.dart';
+
+final expenseRepositoryProvider =
+    Provider.autoDispose((ref) => ExpenseRepository());
 
 class ExpenseRepository {
   /// [Expense] を作成する
@@ -11,7 +15,7 @@ class ExpenseRepository {
   Future<void> delete({required String userId, required String expenseId}) =>
       expenseRef(userId: userId, expenseId: expenseId).delete();
 
-  /// 指定した [AppUser] の [Expense] のコレクションを購読する
+  /// 指定した [Expense] の [Expense] のコレクションを購読する
   Stream<List<Expense>> subscribeExpenses({required String userId}) {
     return expensesRef(userId: userId)
         .orderBy("createdAt", descending: true)

@@ -8,11 +8,15 @@ part of 'app_user.dart';
 
 _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
       userId: json['userId'] as String? ?? '',
-      createdAt: json['createdAt'] ?? const ServerTimestamp(),
+      createdAt: json['createdAt'] == null
+          ? const ServerTimestamp()
+          : alwaysUseServerTimestampSealedTimestampConverter
+              .fromJson(json['createdAt'] as Object),
     );
 
 Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) =>
     <String, dynamic>{
       'userId': instance.userId,
-      'createdAt': instance.createdAt,
+      'createdAt': alwaysUseServerTimestampSealedTimestampConverter
+          .toJson(instance.createdAt),
     };

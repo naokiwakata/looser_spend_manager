@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutterfire_json_converters/flutterfire_json_converters.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -11,7 +10,8 @@ class AppUser with _$AppUser {
   const factory AppUser({
     @Default('') String userId,
     @alwaysUseServerTimestampSealedTimestampConverter
-    @Default(ServerTimestamp()) createdAt,
+    @Default(ServerTimestamp())
+    SealedTimestamp createdAt,
   }) = _AppUser;
 
   factory AppUser.fromJson(Map<String, dynamic> json) =>

@@ -1,4 +1,4 @@
-
+import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutterfire_json_converters/flutterfire_json_converters.dart';
@@ -14,7 +14,7 @@ class Expense with _$Expense {
     @Default(0) int money,
     @alwaysUseServerTimestampSealedTimestampConverter
     @Default(ServerTimestamp())
-    createdAt,
+    SealedTimestamp createdAt,
   }) = _Expense;
 
   factory Expense.fromJson(Map<String, dynamic> json) =>
@@ -24,7 +24,7 @@ class Expense with _$Expense {
     final data = ds.data()! as Map<String, dynamic>;
     return Expense.fromJson(<String, dynamic>{
       ...data,
-      'userId': ds.id,
+      'expenseId': ds.id,
     });
   }
 
