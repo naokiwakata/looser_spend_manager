@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:looser_spend_manager/firestore/firestore_models/app_user/app_user.dart';
 
+import 'firestore_models/app_user/app_user.dart';
 import 'firestore_models/expense/expense.dart';
 
 final _db = FirebaseFirestore.instance;

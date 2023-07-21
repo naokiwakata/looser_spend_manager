@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:looser_spend_manager/firestore/firestore_models/app_user/app_user.dart';
-import 'package:looser_spend_manager/firestore/firestore_refs.dart';
+
+import '../firestore_models/app_user/app_user.dart';
+import '../firestore_refs.dart';
 
 final appUserRepositoryProvider =
     Provider.autoDispose((ref) => AppUserRepository());

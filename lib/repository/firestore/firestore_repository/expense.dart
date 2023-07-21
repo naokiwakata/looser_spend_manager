@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:looser_spend_manager/firestore/firestore_models/expense/expense.dart';
-import 'package:looser_spend_manager/firestore/firestore_refs.dart';
+
+import '../firestore_models/expense/expense.dart';
+import '../firestore_refs.dart';
 
 final expenseRepositoryProvider =
     Provider.autoDispose((ref) => ExpenseRepository());

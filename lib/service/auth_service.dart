@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:looser_spend_manager/auth/auth_repository.dart';
+import 'package:looser_spend_manager/repository/auth/auth_repository.dart';
 
 final authServiceProvider = Provider.autoDispose(
   (ref) => AuthService(

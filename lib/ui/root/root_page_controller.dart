@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:looser_spend_manager/firestore/firestore_repository/app_user_service.dart';
 
-import '../../auth/auth_service.dart';
+import '../../service/auth_service.dart';
+import '../../service/app_user_service.dart';
 
 final authUserStreamProvider = StreamProvider.autoDispose((ref) {
   final authService = ref.watch(authServiceProvider);
