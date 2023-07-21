@@ -17,7 +17,7 @@ class RootPage extends HookConsumerWidget {
           error: (e, st) => Center(
             child: Text(e.toString()),
           ),
-          loading: () => Center(
+          loading: () => const Center(
             child: CircularProgressIndicator(),
           ),
           data: (user) {

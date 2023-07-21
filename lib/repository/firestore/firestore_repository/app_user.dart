@@ -8,5 +8,6 @@ final appUserRepositoryProvider =
 
 class AppUserRepository {
   /// [AppUser] を作成する
-  Future<void> create({required AppUser appUser}) => appUsersRef.add(appUser);
+  Future<void> create({required AppUser appUser}) =>
+      appUsersRef.doc(appUser.userId).set(appUser);
 }
