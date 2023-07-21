@@ -16,7 +16,7 @@ class ExpenseRepository {
   Future<void> delete({required String userId, required String expenseId}) =>
       expenseRef(userId: userId, expenseId: expenseId).delete();
 
-  /// 指定した [Expense] の [Expense] のコレクションを購読する
+  /// 指定した [Expense] のコレクションを購読する
   Stream<List<Expense>> subscribeExpenses({required String userId}) {
     return expensesRef(userId: userId)
         .orderBy("createdAt", descending: true)
@@ -27,6 +27,7 @@ class ExpenseRepository {
     });
   }
 
+  /// 指定したその月の [Expense] のコレクションを購読する
   Stream<List<Expense>> subscribeExpensesByMonth(
       {required String userId, required DateTime date}) {
     final firstTimestamp =

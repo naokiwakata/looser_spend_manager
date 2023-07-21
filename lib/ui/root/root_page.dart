@@ -21,15 +21,17 @@ class RootPage extends HookConsumerWidget {
             child: CircularProgressIndicator(),
           ),
           data: (user) {
-            useEffect(() {
-              if (user == null) {
-                rootServiceController.signIn();
-              } else {
-                rootServiceController.createUser(user.uid);
-              }
-              [user];
-              return null;
-            });
+            useEffect(
+              () {
+                if (user == null) {
+                  rootServiceController.signIn();
+                } else {
+                  rootServiceController.createUser(user.uid);
+                }
+                return null;
+              },
+              [user],
+            );
 
             return AutoTabsRouter(
               routes: const [
@@ -44,12 +46,12 @@ class RootPage extends HookConsumerWidget {
                     selectedIndex: tabsRouter.activeIndex,
                     destinations: const [
                       NavigationDestination(
-                        icon: Icon(Icons.home),
-                        label: 'Home',
+                        icon: Icon(Icons.add),
+                        label: '追加',
                       ),
                       NavigationDestination(
-                        icon: Icon(Icons.settings),
-                        label: 'Settings',
+                        icon: Icon(Icons.list),
+                        label: 'リスト',
                       ),
                     ],
                     onDestinationSelected: tabsRouter.setActiveIndex,
