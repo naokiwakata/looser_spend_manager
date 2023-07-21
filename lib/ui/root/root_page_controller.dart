@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../service/auth_service.dart';
 import '../../service/app_user_service.dart';
+import '../../service/auth_service.dart';
 
 final authUserStreamProvider = StreamProvider.autoDispose((ref) {
   final authService = ref.watch(authServiceProvider);
@@ -27,6 +27,9 @@ class RootController {
   }
 
   Future<void> createUser(String userId) async {
-    await _appUserService.create(userId);
+    final user = await _appUserService.fetch(userId);
+    if (user == null) {
+      await _appUserService.create(userId);
+    }
   }
 }

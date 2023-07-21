@@ -19,4 +19,8 @@ class AppUserService {
     final appUser = AppUser(userId: userId);
     _repository.create(appUser: appUser);
   }
+
+  Future<AppUser?> fetch(String userId) async {
+    return _repository.fetch(userId: userId);
+  }
 }
