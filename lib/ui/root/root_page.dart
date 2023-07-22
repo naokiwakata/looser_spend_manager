@@ -40,7 +40,7 @@ class RootPage extends HookConsumerWidget {
 
             return AutoTabsRouter(
               routes: const [
-                RootRoute(),
+                AddRoute(),
                 SettingsRoute(),
               ],
               builder: (context, child) {

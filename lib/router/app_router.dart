@@ -9,10 +9,12 @@ class AppRouter extends $AppRouter {
         AutoRoute(
           path: '/',
           page: RootRoute.page,
+          initial: true,
           children: [
             AutoRoute(
-              path: 'home',
-              page: RootRoute.page,
+              path: 'add',
+              page: AddRoute.page,
+              initial: true
             ),
             AutoRoute(
               path: 'settings',
