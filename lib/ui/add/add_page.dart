@@ -14,6 +14,7 @@ class AddPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(addPageController);
     final selectedMoney = ref.watch(selectedMoneyStateProvider);
+    final selectedSum = selectedMoney.map((money) => money.value).sum();
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -41,7 +42,7 @@ class AddPage extends HookConsumerWidget {
                     style: const TextStyle(color: Colors.black),
                     children: [
                       TextSpan(
-                        text: '${selectedMoney.map((e) => e.value).sum()} 円',
+                        text: '$selectedSum 円',
                         style: const TextStyle(fontSize: 24),
                       ),
                       const TextSpan(
@@ -75,7 +76,7 @@ class AddPage extends HookConsumerWidget {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => controller.add(sum: selectedSum),
                   child: const Text('追加'),
                 ),
                 const SizedBox(height: 20),
