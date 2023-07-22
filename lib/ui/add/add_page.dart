@@ -99,9 +99,19 @@ class AddPage extends HookConsumerWidget {
                           }).toList(),
                         ),
                         const SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: () => controller.add(sum: selectedSum),
-                          child: const Text('追加'),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () => controller.clear(),
+                              child: const Text('クリア'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () => controller.add(
+                                  sum: selectedSum, userId: user!.uid),
+                              child: const Text('追加'),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 20),
                       ],
