@@ -13,13 +13,14 @@ Future<void> main() async {
   runApp(ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   MyApp({super.key});
 
   final _appRouter = AppRouter();
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp.router(
+      scaffoldMessengerKey: ref.watch(scaffoldMessengerKeyProvider),
       routerConfig: _appRouter.config(),
       title: 'Looser Spend Manager',
       theme: ThemeData(
@@ -29,3 +30,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+final scaffoldMessengerKeyProvider = Provider(
+  (_) => GlobalKey<ScaffoldMessengerState>(),
+);

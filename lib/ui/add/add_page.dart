@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:looser_spend_manager/extension/date_time.dart';
+import 'package:looser_spend_manager/main.dart';
 
 import '../../domain/money.dart';
 import '../../extension/iterable.dart';
@@ -111,8 +112,17 @@ class AddPage extends HookConsumerWidget {
                               child: const Text('クリア'),
                             ),
                             ElevatedButton(
-                              onPressed: () => controller.add(
-                                  sum: selectedSum, userId: user!.uid),
+                              onPressed: () {
+                                controller.add(
+                                    sum: selectedSum, userId: user!.uid);
+
+                                /// SnackBar を表示
+                                final messengerState = ref
+                                    .read(scaffoldMessengerKeyProvider)
+                                    .currentState;
+                                messengerState?.showSnackBar(
+                                    const SnackBar(content: Text("追加しました")));
+                              },
                               child: const Text('追加'),
                             ),
                           ],
