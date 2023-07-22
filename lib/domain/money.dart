@@ -1,6 +1,7 @@
 enum Money {
   jpy100(value: 100),
   jpy200(value: 200),
+  jpy300(value: 300),
   jpy500(value: 500),
   jpy800(value: 800),
   jpy1000(value: 1000),
@@ -8,7 +9,6 @@ enum Money {
   jpy2000(value: 2000),
   jpy3000(value: 3000),
   jpy5000(value: 5000),
-  jpy7000(value: 7000),
   jpy10000(value: 10000),
   jpy15000(value: 15000),
   jpy20000(value: 20000),

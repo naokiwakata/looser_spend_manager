@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:looser_spend_manager/extension/date_time.dart';
 
 import '../../domain/money.dart';
 import '../../extension/iterable.dart';
@@ -16,6 +17,7 @@ class AddPage extends HookConsumerWidget {
     final controller = ref.watch(addPageController);
     final selectedMoney = ref.watch(selectedMoneyStateProvider);
     final selectedSum = selectedMoney.map((money) => money.value).sum();
+    final thisMonth = ref.watch(selectedMonthProvider);
 
     return ref.watch(authUserStreamProvider).when(
           error: (e, st) => Center(
@@ -49,9 +51,9 @@ class AddPage extends HookConsumerWidget {
                                         .sum();
                                     return Column(
                                       children: [
-                                        const Text(
-                                          '5月',
-                                          style: TextStyle(fontSize: 30),
+                                        Text(
+                                          "${thisMonth.formatMonth()}月",
+                                          style: const TextStyle(fontSize: 30),
                                         ),
                                         Text(
                                           '$sum 円',
