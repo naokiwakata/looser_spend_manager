@@ -1,9 +1,15 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:looser_spend_manager/domain/firestore_models/expense/expense.dart';
-import 'package:looser_spend_manager/service/auth_service.dart';
-import 'package:looser_spend_manager/service/expense_service.dart';
 
+import '../../domain/firestore_models/expense/expense.dart';
 import '../../domain/money.dart';
+import '../../service/auth_service.dart';
+import '../../service/expense_service.dart';
+
+final expensesStreamProvider =
+    StreamProvider.autoDispose.family<List<Expense>, String>((ref, userId) {
+  final expenseService = ref.watch(expenseServiceProvider);
+  return expenseService.subscribe(userId);
+});
 
 final selectedMoneyStateProvider = StateProvider.autoDispose(
   (ref) => <Money>{},

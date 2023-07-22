@@ -23,4 +23,8 @@ class ExpenseService {
       expense: expense,
     );
   }
+
+  Stream<List<Expense>> subscribe(String userId) {
+    return _repository.subscribeExpenses(userId: userId);
+  }
 }
