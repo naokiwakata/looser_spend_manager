@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../firestore_models/app_user/app_user.dart';
+import '../../../domain/firestore_models/app_user/app_user.dart';
 import '../firestore_refs.dart';
 
 final appUserRepositoryProvider =

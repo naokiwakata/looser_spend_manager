@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../firestore_models/expense/expense.dart';
+import '../../../domain/firestore_models/expense/expense.dart';
 import '../firestore_refs.dart';
 
 final expenseRepositoryProvider =

@@ -8,9 +8,12 @@ final authUserStreamProvider = StreamProvider.autoDispose((ref) {
   return authService.subscribeUser();
 });
 
-final rootControllerProvider = Provider.autoDispose((ref) => RootController(
+final rootControllerProvider = Provider.autoDispose(
+  (ref) => RootController(
     authService: ref.watch(authServiceProvider),
-    appUserService: ref.watch(appUserServiceProvider)));
+    appUserService: ref.watch(appUserServiceProvider),
+  ),
+);
 
 class RootController {
   RootController(

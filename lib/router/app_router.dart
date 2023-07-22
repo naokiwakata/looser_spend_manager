@@ -12,7 +12,7 @@ class AppRouter extends $AppRouter {
           children: [
             AutoRoute(
               path: 'home',
-              page: HomeRoute.page,
+              page: RootRoute.page,
             ),
             AutoRoute(
               path: 'settings',

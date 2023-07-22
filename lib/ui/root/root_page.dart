@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'root_page_controller.dart';
 
 import '../../router/app_router.gr.dart';
+import 'root_page_controller.dart';
 
 @RoutePage()
 class RootPage extends HookConsumerWidget {
@@ -18,7 +18,12 @@ class RootPage extends HookConsumerWidget {
             child: Text(e.toString()),
           ),
           loading: () => const Center(
-            child: CircularProgressIndicator(),
+            child: ColoredBox(
+              color: Colors.white,
+              child: SizedBox.expand(
+                child: Center(child: CircularProgressIndicator()),
+              ),
+            ),
           ),
           data: (user) {
             useEffect(
@@ -35,7 +40,7 @@ class RootPage extends HookConsumerWidget {
 
             return AutoTabsRouter(
               routes: const [
-                HomeRoute(),
+                RootRoute(),
                 SettingsRoute(),
               ],
               builder: (context, child) {
