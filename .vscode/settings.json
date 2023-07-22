@@ -42,5 +42,6 @@
       "signin",
       "todo",
       "Todos"
-    ]
+    ],
+    "commentTranslate.hover.enabled": true
   }

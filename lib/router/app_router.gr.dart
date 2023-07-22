@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:looser_spend_manager/ui/root/root_page.dart' as _i3;
-import 'package:looser_spend_manager/ui/add/home_page.dart' as _i1;
+import 'package:looser_spend_manager/ui/add/add_page.dart' as _i1;
 import 'package:looser_spend_manager/ui/list/settings_page.dart' as _i2;
 
 abstract class $AppRouter extends _i4.RootStackRouter {
