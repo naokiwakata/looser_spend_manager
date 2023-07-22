@@ -10,6 +10,19 @@ final expensesStreamProvider =
   return expenseService.subscribe(userId);
 });
 
+final expensesByMonthStreamProvider =
+    StreamProvider.autoDispose.family<List<Expense>, String>((ref, userId) {
+  final expenseService = ref.watch(expenseServiceProvider);
+  final selectedMonth = ref.watch(selectedMonthProvider);
+  return expenseService.subscribeByMonth(
+    userId: userId,
+    dateTime: selectedMonth,
+  );
+});
+
+final selectedMonthProvider =
+    StateProvider.autoDispose((ref) => DateTime.now());
+
 final selectedMoneyStateProvider = StateProvider.autoDispose(
   (ref) => <Money>{},
 );

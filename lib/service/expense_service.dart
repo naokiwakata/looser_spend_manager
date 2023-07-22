@@ -27,4 +27,9 @@ class ExpenseService {
   Stream<List<Expense>> subscribe(String userId) {
     return _repository.subscribeExpenses(userId: userId);
   }
+
+  Stream<List<Expense>> subscribeByMonth(
+      {required String userId, required DateTime dateTime}) {
+    return _repository.subscribeExpensesByMonth(userId: userId, date: dateTime);
+  }
 }

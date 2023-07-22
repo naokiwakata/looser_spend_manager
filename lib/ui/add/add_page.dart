@@ -40,26 +40,28 @@ class AddPage extends HookConsumerWidget {
                       children: <Widget>[
                         const Spacer(flex: 2),
                         if (user != null)
-                          ref.watch(expensesStreamProvider(user.uid)).when(
-                              data: (expenses) {
-                                final sum = expenses
-                                    .map((expense) => expense.money)
-                                    .sum();
-                                return Column(
-                                  children: [
-                                    const Text(
-                                      '5月',
-                                      style: TextStyle(fontSize: 30),
-                                    ),
-                                    Text(
-                                      '$sum 円',
-                                      style: const TextStyle(fontSize: 30),
-                                    ),
-                                  ],
-                                );
-                              },
-                              error: (e, st) => Text(e.toString()),
-                              loading: () => const Text("Loading")),
+                          ref
+                              .watch(expensesByMonthStreamProvider(user.uid))
+                              .when(
+                                  data: (expenses) {
+                                    final sum = expenses
+                                        .map((expense) => expense.money)
+                                        .sum();
+                                    return Column(
+                                      children: [
+                                        const Text(
+                                          '5月',
+                                          style: TextStyle(fontSize: 30),
+                                        ),
+                                        Text(
+                                          '$sum 円',
+                                          style: const TextStyle(fontSize: 30),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                  error: (e, st) => Text(e.toString()),
+                                  loading: () => const Text("Loading")),
                         const Spacer(flex: 1),
                         RichText(
                           text: TextSpan(

@@ -31,9 +31,9 @@ class ExpenseRepository {
   Stream<List<Expense>> subscribeExpensesByMonth(
       {required String userId, required DateTime date}) {
     final firstTimestamp =
-        Timestamp.fromDate(DateTime(date.year, date.month + 1, 0));
+        Timestamp.fromDate(DateTime(date.year, date.month, 1));
     final lastTimestamp =
-        Timestamp.fromDate(DateTime(date.year, date.month + 1, 0));
+        Timestamp.fromDate(DateTime(date.year, date.month + 1, 1));
     return expensesRef(userId: userId)
         .orderBy("createdAt", descending: true)
         .where('createdAt', isGreaterThanOrEqualTo: firstTimestamp)
