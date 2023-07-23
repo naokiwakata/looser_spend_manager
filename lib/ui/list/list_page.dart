@@ -12,9 +12,6 @@ class ListPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(addPageController);
-    final selectedMoney = ref.watch(selectedMoneyStateProvider);
-    final selectedSum = selectedMoney.map((money) => money.value).sum();
     final selectedDateTime = ref.watch(selectedDateTimeProvider);
 
     return Scaffold(
