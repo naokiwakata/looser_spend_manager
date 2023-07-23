@@ -18,7 +18,7 @@ class AddPage extends HookConsumerWidget {
     final controller = ref.watch(addPageController);
     final selectedMoney = ref.watch(selectedMoneyStateProvider);
     final selectedSum = selectedMoney.map((money) => money.value).sum();
-    final thisMonth = ref.watch(selectedDateTimeProvider);
+    final selectedDateTime = ref.watch(selectedDateTimeProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -31,16 +31,16 @@ class AddPage extends HookConsumerWidget {
                 const Spacer(flex: 2),
                 ref.watch(expensesByMonthStreamProvider).when(
                     data: (expenses) {
-                      final sum =
+                      final sumOfMonth =
                           expenses.map((expense) => expense.money).sum();
                       return Column(
                         children: [
                           Text(
-                            "${thisMonth.formatMonth()}月",
+                            "${selectedDateTime.formatMonth()}月",
                             style: const TextStyle(fontSize: 30),
                           ),
                           Text(
-                            '$sum 円',
+                            '$sumOfMonth 円',
                             style: const TextStyle(fontSize: 30),
                           ),
                         ],
