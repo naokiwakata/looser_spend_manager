@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i4;
 import 'package:looser_spend_manager/ui/add/add_page.dart' as _i2;
-import 'package:looser_spend_manager/ui/list/settings_page.dart' as _i3;
+import 'package:looser_spend_manager/ui/list/list_page.dart' as _i3;
 import 'package:looser_spend_manager/ui/root/root_page.dart' as _i1;
 
 abstract class $AppRouter extends _i4.RootStackRouter {
@@ -33,7 +33,7 @@ abstract class $AppRouter extends _i4.RootStackRouter {
     SettingsRoute.name: (routeData) {
       return _i4.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.SettingsPage(),
+        child: const _i3.ListPage(),
       );
     },
   };
@@ -68,7 +68,7 @@ class AddRoute extends _i4.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.SettingsPage]
+/// [_i3.ListPage]
 class SettingsRoute extends _i4.PageRouteInfo<void> {
   const SettingsRoute({List<_i4.PageRouteInfo>? children})
       : super(

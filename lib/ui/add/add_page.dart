@@ -95,7 +95,14 @@ class AddPage extends HookConsumerWidget {
                       child: const Text('クリア'),
                     ),
                     ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: selectedSum == 0
+                              ? const MaterialStatePropertyAll(Colors.grey)
+                              : const MaterialStatePropertyAll(Colors.orange)),
                       onPressed: () async {
+                        if (selectedSum == 0) {
+                          return;
+                        }
                         final messengerState =
                             ref.read(scaffoldMessengerKeyProvider).currentState;
 
