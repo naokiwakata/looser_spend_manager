@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../repository/auth/auth_repository.dart';
 import '../../router/app_router.gr.dart';
 import 'root_page_controller.dart';
 
@@ -32,6 +33,11 @@ class RootPage extends HookConsumerWidget {
                   rootServiceController.signIn();
                 } else {
                   rootServiceController.createUser(user.uid);
+                  WidgetsBinding.instance.addPostFrameCallback(
+                    (_) => ref
+                        .watch(userIdStateProvider.notifier)
+                        .update((state) => user.uid),
+                  );
                 }
                 return null;
               },

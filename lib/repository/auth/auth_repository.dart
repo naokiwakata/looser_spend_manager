@@ -3,6 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final authRepositoryProvider = Provider.autoDispose((ref) => AuthRepository());
 
+final userIdStateProvider = StateProvider<String>((ref) => '');
+
 class AuthRepository {
   final _auth = FirebaseAuth.instance;
 
