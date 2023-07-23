@@ -6,7 +6,6 @@ import 'package:looser_spend_manager/main.dart';
 
 import '../../domain/money.dart';
 import '../../extension/iterable.dart';
-import '../root/root_page_controller.dart';
 import 'add_page_controller.dart';
 
 @RoutePage()
@@ -18,7 +17,7 @@ class AddPage extends HookConsumerWidget {
     final controller = ref.watch(addPageController);
     final selectedMoney = ref.watch(selectedMoneyStateProvider);
     final selectedSum = selectedMoney.map((money) => money.value).sum();
-    final thisMonth = ref.watch(selectedMonthProvider);
+    final thisMonth = ref.watch(selectedDateTimeProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -29,25 +28,25 @@ class AddPage extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 const Spacer(flex: 2),
-                  ref.watch(expensesByMonthStreamProvider).when(
-                      data: (expenses) {
-                        final sum =
-                            expenses.map((expense) => expense.money).sum();
-                        return Column(
-                          children: [
-                            Text(
-                              "${thisMonth.formatMonth()}月",
-                              style: const TextStyle(fontSize: 30),
-                            ),
-                            Text(
-                              '$sum 円',
-                              style: const TextStyle(fontSize: 30),
-                            ),
-                          ],
-                        );
-                      },
-                      error: (e, st) => Text(e.toString()),
-                      loading: () => const Text("Loading")),
+                ref.watch(expensesByMonthStreamProvider).when(
+                    data: (expenses) {
+                      final sum =
+                          expenses.map((expense) => expense.money).sum();
+                      return Column(
+                        children: [
+                          Text(
+                            "${thisMonth.formatMonth()}月",
+                            style: const TextStyle(fontSize: 30),
+                          ),
+                          Text(
+                            '$sum 円',
+                            style: const TextStyle(fontSize: 30),
+                          ),
+                        ],
+                      );
+                    },
+                    error: (e, st) => Text(e.toString()),
+                    loading: () => const Text("Loading")),
                 const Spacer(flex: 1),
                 RichText(
                   text: TextSpan(

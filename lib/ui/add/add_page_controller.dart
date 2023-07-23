@@ -5,26 +5,30 @@ import '../../domain/firestore_models/expense/expense.dart';
 import '../../domain/money.dart';
 import '../../service/expense_service.dart';
 
+/// [Expense] コレクションを購読する StreamProvider
 final expensesStreamProvider = StreamProvider.autoDispose<List<Expense>>((ref) {
   final userId = ref.watch(userIdStateProvider);
   final expenseService = ref.watch(expenseServiceProvider);
   return expenseService.subscribe(userId);
 });
 
+/// 月毎の [Expense] を購読する StreamProvider
 final expensesByMonthStreamProvider =
     StreamProvider.autoDispose<List<Expense>>((ref) {
   final userId = ref.watch(userIdStateProvider);
   final expenseService = ref.watch(expenseServiceProvider);
-  final selectedMonth = ref.watch(selectedMonthProvider);
+  final selectedMonth = ref.watch(selectedDateTimeProvider);
   return expenseService.subscribeByMonth(
     userId: userId,
     dateTime: selectedMonth,
   );
 });
 
-final selectedMonthProvider =
+/// 現在選択中の DateTime を管理する StateProvider
+final selectedDateTimeProvider =
     StateProvider.autoDispose((ref) => DateTime.now());
 
+/// 選択中の金額を管理する StateProvider
 final selectedMoneyStateProvider = StateProvider.autoDispose(
   (ref) => <Money>{},
 );
@@ -37,6 +41,7 @@ final addPageController = Provider.autoDispose(
   ),
 );
 
+/// [AddPage] に関するユーザーの操作を担当するコントローラ
 class AddPageController {
   AddPageController({
     required StateController<Set<Money>> selectedMoneyController,
