@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:looser_spend_manager/repository/auth/auth_repository.dart';
+import 'package:looser_spend_manager/util/result.dart';
 
 import '../../domain/firestore_models/expense/expense.dart';
 import '../../domain/money.dart';
@@ -64,11 +65,15 @@ class AddPageController {
         .update((state) => state.where((item) => item != money).toSet());
   }
 
-  Future<void> add({required int sum}) async {
+  Future<Result> add({required int sum}) async {
     final expense = Expense(money: sum);
-    _expenseService.create(expense: expense, userId: _userId);
-
-    clear();
+    try {
+      _expenseService.create(expense: expense, userId: _userId);
+      clear();
+      return const Success(null);
+    } on Exception catch (e) {
+      return Failure(e);
+    }
   }
 
   void clear() {
