@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:looser_spend_manager/extension/date_time.dart';
-import 'package:looser_spend_manager/main.dart';
-import 'package:looser_spend_manager/util/result.dart';
 
 import '../../domain/money.dart';
+import '../../extension/date_time.dart';
 import '../../extension/iterable.dart';
+import '../../main.dart';
+import '../../util/result.dart';
 import 'add_page_controller.dart';
 
 @RoutePage()

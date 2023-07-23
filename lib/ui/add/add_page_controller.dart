@@ -1,10 +1,10 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:looser_spend_manager/repository/auth/auth_repository.dart';
-import 'package:looser_spend_manager/util/result.dart';
 
 import '../../domain/firestore_models/expense/expense.dart';
 import '../../domain/money.dart';
+import '../../repository/auth/auth_repository.dart';
 import '../../service/expense_service.dart';
+import '../../util/result.dart';
 
 /// [Expense] コレクションを購読する StreamProvider
 final expensesStreamProvider = StreamProvider.autoDispose<List<Expense>>((ref) {

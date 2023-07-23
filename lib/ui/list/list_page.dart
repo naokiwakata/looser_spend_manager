@@ -1,9 +1,9 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:looser_spend_manager/extension/date_time.dart';
-import 'package:looser_spend_manager/extension/iterable.dart';
 
+import '../../extension/date_time.dart';
+import '../../extension/iterable.dart';
 import '../add/add_page_controller.dart';
 
 @RoutePage()

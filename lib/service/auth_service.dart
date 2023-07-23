@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:looser_spend_manager/repository/auth/auth_repository.dart';
+
+import '../repository/auth/auth_repository.dart';
 
 final authServiceProvider = Provider.autoDispose(
   (ref) => AuthService(
@@ -9,8 +10,7 @@ final authServiceProvider = Provider.autoDispose(
 );
 
 class AuthService {
-  AuthService({required AuthRepository repository})
-      : _repository = repository;
+  AuthService({required AuthRepository repository}) : _repository = repository;
 
   final AuthRepository _repository;
 
