@@ -1,5 +1,16 @@
-sealed class Result {}
+/// sealed classに準拠したResultクラスを生成
+sealed class Result<S, E extends Exception> {
+  const Result();
+}
 
-class Success extends Result {}
+/// Resultクラスに準拠したSuccessクラス
+final class Success<S, E extends Exception> extends Result<S, E> {
+  const Success(this.value);
+  final S value;
+}
 
-class Failure extends Result {}
+/// Resultクラスに準拠したFailureクラス
+final class Failure<S, E extends Exception> extends Result<S, E> {
+  const Failure(this.exception);
+  final E exception;
+}
