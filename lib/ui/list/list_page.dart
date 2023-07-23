@@ -15,49 +15,87 @@ class ListPage extends HookConsumerWidget {
     final selectedDateTime = ref.watch(selectedDateTimeProvider);
 
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 233, 233, 233),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text(
+          '2023年7月',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        shadowColor: Colors.white,
+        surfaceTintColor: Colors.white,
+      ),
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                ref.watch(expensesByMonthStreamProvider).when(
-                    data: (expenses) {
-                      final sumOfMonth =
-                          expenses.map((expense) => expense.money).sum();
-                      return Expanded(
-                        child: Column(
-                          children: [
-                            Text(
-                              "${selectedDateTime.formatMonth()}月",
-                              style: const TextStyle(fontSize: 30),
-                            ),
-                            Text(
-                              '$sumOfMonth 円',
-                              style: const TextStyle(fontSize: 30),
-                            ),
-                            Expanded(
-                              child: ListView(
-                                children: expenses
-                                    .map(
-                                      (expense) => Column(
-                                        children: [
-                                          Text(
-                                              "${expense.createdAt.dateTime!.formatDateTime()} ${expense.money}円")
-                                        ],
-                                      ),
-                                    )
-                                    .toList(),
+            padding: const EdgeInsets.all(16),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  ref.watch(expensesByMonthStreamProvider).when(
+                      data: (expenses) {
+                        final sumOfMonth =
+                            expenses.map((expense) => expense.money).sum();
+                        return Expanded(
+                          child: Column(
+                            children: [
+                              const SizedBox(height: 8),
+                              Text(
+                                '$sumOfMonth 円',
+                                style: const TextStyle(fontSize: 30),
                               ),
-                            )
-                          ],
-                        ),
-                      );
-                    },
-                    error: (e, st) => Text(e.toString()),
-                    loading: () => const Text("Loading")),
-              ],
+                              const Divider(),
+                              Expanded(
+                                child: ListView(
+                                  children: expenses
+                                      .map(
+                                        (expense) => Column(
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      8, 0, 0, 0),
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    expense.createdAt.dateTime!
+                                                        .formatDateTime(),
+                                                  ),
+                                                  const Spacer(),
+                                                  Text(" ${expense.money}円"),
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: const Icon(
+                                                      Icons.delete_forever,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            const Divider(),
+                                          ],
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                            ],
+                          ),
+                        );
+                      },
+                      error: (e, st) => Text(e.toString()),
+                      loading: () => const Text("Loading")),
+                ],
+              ),
             ),
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:looser_spend_manager/color_schemes.g.dart';
 
 import 'firebase_options.dart';
 import 'router/app_router.dart';
@@ -24,9 +25,13 @@ class MyApp extends ConsumerWidget {
       routerConfig: _appRouter.config(),
       title: 'Looser Spend Manager',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: lightColorScheme,
         useMaterial3: true,
       ),
+      // darkTheme: ThemeData(
+      //   colorScheme: darkColorScheme,
+      //   useMaterial3: true,
+      // ),
     );
   }
 }

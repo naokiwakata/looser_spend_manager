@@ -21,6 +21,16 @@ class AddPage extends HookConsumerWidget {
     final selectedDateTime = ref.watch(selectedDateTimeProvider);
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          '2023年7月',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        shadowColor: Colors.white,
+      ),
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -28,22 +38,36 @@ class AddPage extends HookConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                const Spacer(flex: 2),
                 ref.watch(expensesByMonthStreamProvider).when(
                     data: (expenses) {
                       final sumOfMonth =
                           expenses.map((expense) => expense.money).sum();
-                      return Column(
-                        children: [
-                          Text(
-                            "${selectedDateTime.formatMonth()}月",
-                            style: const TextStyle(fontSize: 30),
-                          ),
-                          Text(
-                            '$sumOfMonth 円',
-                            style: const TextStyle(fontSize: 30),
-                          ),
-                        ],
+                      return Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 122, 121, 121),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              selectedDateTime.formatMonth(),
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              '¥ $sumOfMonth',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       );
                     },
                     error: (e, st) => Text(e.toString()),
@@ -54,11 +78,12 @@ class AddPage extends HookConsumerWidget {
                     style: const TextStyle(color: Colors.black),
                     children: [
                       TextSpan(
-                        text: '$selectedSum 円',
-                        style: const TextStyle(fontSize: 24),
+                        text: '$selectedSum',
+                        style: const TextStyle(fontSize: 30),
                       ),
                       const TextSpan(
-                        text: ' を追加する',
+                        text: ' 円を追加する',
+                        style: TextStyle(fontSize: 14),
                       ),
                     ],
                   ),
@@ -70,11 +95,17 @@ class AddPage extends HookConsumerWidget {
                   children: Money.values.reversed.map((money) {
                     final isSelected = selectedMoney.contains(money);
                     return FilterChip(
-                      label: Text(money.toDisplayText()),
+                      label: Text(
+                        money.toDisplayText(),
+                        style: TextStyle(
+                          color: isSelected ? Colors.white : Colors.black,
+                        ),
+                      ),
                       showCheckmark: false,
                       elevation: 2,
                       selected: isSelected,
-                      selectedColor: Colors.amber,
+                      selectedColor:
+                          Theme.of(context).colorScheme.primaryContainer,
                       disabledColor: Colors.white,
                       onSelected: (onSelected) {
                         if (onSelected) {
@@ -94,11 +125,16 @@ class AddPage extends HookConsumerWidget {
                       onPressed: () => controller.clear(),
                       child: const Text('クリア'),
                     ),
+                    const SizedBox(width: 8),
                     ElevatedButton(
                       style: ButtonStyle(
-                          backgroundColor: selectedSum == 0
-                              ? const MaterialStatePropertyAll(Colors.grey)
-                              : const MaterialStatePropertyAll(Colors.orange)),
+                        backgroundColor: selectedSum == 0
+                            ? MaterialStatePropertyAll(
+                                Theme.of(context).colorScheme.surfaceVariant,
+                              )
+                            : MaterialStatePropertyAll(
+                                Theme.of(context).colorScheme.surface),
+                      ),
                       onPressed: () async {
                         if (selectedSum == 0) {
                           return;
